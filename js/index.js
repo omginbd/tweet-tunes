@@ -1,5 +1,6 @@
 var toneMap = {}
 var ctx = null;
+var tweet = null;
 
 function waitForReady(cb) {
     if (document.readyState === 'complete' || document.readyState === 'interactive') {
@@ -13,16 +14,17 @@ function waitForReady(cb) {
 
 function playAudio(inputString) {
     // var input = (`@CNN is in a total meltdown with their FAKE NEWS because their ratings are tanking since election and their credibility will soon be gone!`).split(' ')
-    var words = inputString.split(' ')
+    var words = inputString.split(' ');
     if (ctx === null) {
         ctx = new (window.AudioContext || window.webkitAudioContext())();
     }
 
-    var startTime = ctx.currentTime
+    var startTime = ctx.currentTime;
     var noteLengths = [.125, .25, .5, .75, 1];
+
     for (var word of words) { // Words
-        console.log(startTime)
-        var noteLength = noteLengths[Math.floor(Math.random() * noteLengths.length)];
+        // console.log(startTime)
+        var noteLength = randomElement(noteLengths);
         var osc = ctx.createOscillator()
         osc.connect(ctx.destination)
         osc.type = 'sine'
@@ -33,24 +35,21 @@ function playAudio(inputString) {
         osc.start(startTime)
         osc.stop(startTime + noteLength)
         startTime += noteLength
-        console.log('now playing ' + word + ' ' + toneMap[word])
+        // console.log('now playing ' + word + ' ' + toneMap[word])
     }
 }
 
 function retrieveTweets(inputString) {
     $.ajax({
-        url: 'http://localhost:63342/tweet-tunes/getTweets.php',
+        url: 'http://localhost:63342/tweet-tunes/tweetFunctions.php',
         type: 'GET',
         dataType: 'json',
         data: {
             query: inputString
         },
         success: function (response) {
-            console.log(response);
-            var tweet = selectTweet(response.statuses);
-            console.log(tweet);
-            displayTweet(tweet);
-            playAudio(tweet.text);
+            tweet = selectTweet(response.statuses);
+            embedTweet(tweet);
         },
         error: function (response) {
             alert("Could not get tweets");
@@ -59,12 +58,33 @@ function retrieveTweets(inputString) {
 }
 
 function selectTweet(tweets) {
-    return tweets[0];
+    return randomElement(tweets);
+}
+
+function randomElement(array){
+    return array[Math.floor(Math.random() * array.length)];
+}
+
+function embedTweet(tweet) {
+    $.ajax({
+        url: 'http://localhost:63342/tweet-tunes/tweetFunctions.php',
+        type: 'GET',
+        dataType: 'json',
+        data: {
+            tweetId: tweet.id_str
+        },
+        success: function (response) {
+            console.log(response);
+            displayTweet(response.html);
+            playAudio(tweet.text);
+        }, error: function (response) {
+            alert(response.errors[0].message);
+        }
+    });
 }
 
 function displayTweet(tweet) {
-    console.log(tweet);
-    $('.tweets').append('<p>' + tweet.text + '</p>');
+    $('.tweets').html(tweet);
 }
 
 waitForReady(function () {
