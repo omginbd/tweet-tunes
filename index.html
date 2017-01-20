@@ -1,20 +1,17 @@
 <html>
 <head>
-    <title>We should pick a super cool name for this</title>
-    <style>
-        body {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-    </style>
+    <title>Tweet Tunes</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-<h1>Tweet Tunes</h1>
+<h1 class="title">Tweet Tunes <i class="fa fa-twitter" aria-hidden="true"></i></h1>
 <div id="input-container">
-    <input id="keyword-input"/>
-    <button id="play-button">Play</button>
+    <div class="form-group">
+        <input type="text" class="form-control" id="keyword-input" placeholder="Enter Search...">
+    </div>
+    <button id="play-button" class="btn btn-success">Play Tweet</button>
 </div>
 <div class="tweets">
 
@@ -22,6 +19,7 @@
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"
         integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 <script src="https://platform.twitter.com/widgets.js" type="application/javascript"></script>
-<script src="index.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/index.js"></script>
 </body>
 </html>

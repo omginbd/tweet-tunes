@@ -1,0 +1,21 @@
+body {
+  background-color: #326ada;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.title {
+  font-size: 72pt;
+  color: #d4d8d4;
+}
+
+#input-container {
+  color: red;
+}
+
+#keyword-input{
+  width: 325px;
+}
