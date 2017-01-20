@@ -1,14 +1,14 @@
-var toneMap = {}
+var toneMap = {};
 var ctx = null;
 var tweet = null;
 
 function waitForReady(cb) {
     if (document.readyState === 'complete' || document.readyState === 'interactive') {
-        cb()
+        cb();
     }
 
     document.addEventListener('DOMContentLoaded', function () {
-        cb()
+        cb();
     })
 }
 
@@ -25,16 +25,16 @@ function playAudio(inputString) {
     for (var word of words) { // Words
         // console.log(startTime)
         var noteLength = randomElement(noteLengths);
-        var osc = ctx.createOscillator()
-        osc.connect(ctx.destination)
-        osc.type = 'sine'
+        var osc = ctx.createOscillator();
+        osc.connect(ctx.destination);
+        osc.type = 'sine';
         if (!toneMap[word]) {
-            toneMap[word] = Math.floor(Math.random() * 5000)
+            toneMap[word] = 220 + Math.floor(Math.random() * 800);
         }
-        osc.frequency.value = toneMap[word]
-        osc.start(startTime)
-        osc.stop(startTime + noteLength)
-        startTime += noteLength
+        osc.frequency.value = toneMap[word];
+        osc.start(startTime);
+        osc.stop(startTime + noteLength);
+        startTime += noteLength;
         // console.log('now playing ' + word + ' ' + toneMap[word])
     }
 }
@@ -61,7 +61,7 @@ function selectTweet(tweets) {
     return randomElement(tweets);
 }
 
-function randomElement(array){
+function randomElement(array) {
     return array[Math.floor(Math.random() * array.length)];
 }
 
@@ -88,8 +88,8 @@ function displayTweet(tweet) {
 }
 
 waitForReady(function () {
-    var input = document.getElementById('keyword-input')
-    var playButton = document.getElementById('play-button')
+    var input = document.getElementById('keyword-input');
+    var playButton = document.getElementById('play-button');
     playButton.addEventListener('click', function () {
         retrieveTweets(input.value);
     })
