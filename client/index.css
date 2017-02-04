@@ -1,0 +1,38 @@
+body {
+  background-color: #326ada;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.title {
+  font-family: sans-serif;
+  font-size: 72pt;
+  color: white;
+}
+
+#keyword-input{
+  border-radius: 5px;
+  border: none;
+  height: 20px;
+  padding: 10px;  width: 325px;
+}
+
+#play-button {
+  background: white;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  height: 40px;
+  padding: 0 20px;
+}
+
+#play-button:hover {
+  background: #ccc;
+}
+
+#play-button:active {
+  background: #777;
+}
