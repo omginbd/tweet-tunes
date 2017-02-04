@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Tweet Tunes</title>
+    <meta charset="utf8" />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <h1 class="title">Tweet Tunes <img aria-hidden="true" src="twitter.png"/></h1>
+    <div>
+      <input autofocus id="keyword-input" type="text" placeholder="Enter Search...">
+      <button id="play-button">Play Tweet</button>
+    </div>
+    <div id="tweets"></div>
+    <script src="https://platform.twitter.com/widgets.js"></script>
+    <script src="https://unpkg.com/axios@0.15.3/dist/axios.min.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
