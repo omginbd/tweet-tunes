@@ -1,0 +1,14 @@
+extends layout
+
+block content
+
+    h1(class='title')="Tweet Tunes"
+        i(class='fa fa-twitter' aria-hidden='true')
+
+    div(id='input-container')
+        div(class='form-group')
+            input(type='text' class='form-control' id='keyword-input' placeholder='Enter Search...')
+
+        button(id='play-button' class='btn btn-success')="Play Tweet"
+
+    div(class='tweets')
