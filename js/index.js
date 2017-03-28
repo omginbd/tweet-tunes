@@ -74,8 +74,15 @@ function embedTweet(tweet) {
             tweetId: tweet.id_str
         },
         success: function (response) {
-            console.log(response);
             displayTweet(response.html);
+            var tweetVisible = false;
+            do {
+                var pageTweet = document.getElementsByClassName('Tweet-text');
+                if (pageTweet) {
+                    console.log(pageTweet);
+                    tweetVisible = true;
+                }
+            } while(!tweetVisible);
             playAudio(tweet.text);
         }, error: function (response) {
             alert(response.errors[0].message);
