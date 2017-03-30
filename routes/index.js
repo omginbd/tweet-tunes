@@ -18,7 +18,7 @@ var client = new Twitter({
 router.get('/', function (req, res, next) {
 
   res.render('index')
-})
+});
 
 /* GET Tweets */
 router.get('/tweets', function (req, res, next) {

@@ -1,21 +1,46 @@
 body {
-  background-color: #326ada;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
+    background-color: #326ada;
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
+    /*flex-direction: column;*/
+    /*text-align: center;*/
 }
 
 .title {
-  font-size: 72pt;
-  color: #d4d8d4;
+    font-size: 72pt;
+    color: #d4d8d4;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
 }
 
-#input-container {
-  color: red;
+.subtitle {
+    font-size: 36pt;
+    color: #433e90;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
 }
 
-#keyword-input{
-  width: 325px;
+#search-container {
+    margin-top: 100px;
+    color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+#keyword-input {
+    width: 325px;
+}
+
+.tweets {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
 }
