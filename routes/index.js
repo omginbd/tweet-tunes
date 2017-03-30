@@ -26,8 +26,9 @@ router.get('/tweets', function (req, res, next) {
   client.get('search/tweets', {q: req.query.query, filter: 'safe', lang: 'en'}, function (err, tweets, response) {
     if (err) return console.error(err)
     const tweet = randomElement(tweets.statuses)
-      if (!tweet.text) {
-          tweet.text = "Donald Trump is the President";
+      if (tweet == undefined) {
+          res.statusCode(500);
+          return;
       }
     const tune = makeTune(tweet.text)
     saveTune(tune, tweet)
