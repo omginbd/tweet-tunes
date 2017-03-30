@@ -87,6 +87,7 @@ waitForReady(function () {
 
 $(document).ready(function () {
     updateHistory();
+    console.log("ready");
 });
 
 function updateHistory() {
@@ -122,4 +123,8 @@ function loadHistory(tunes) {
         });
     }
 }
+
+window.setInterval(function(){
+    updateHistory()
+}, 10000);
 
