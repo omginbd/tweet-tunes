@@ -19,7 +19,7 @@ router.get('/', function (req, res, next) {
 /* GET Tweets */
 router.get('/tweets', function (req, res, next) {
 
-    client.get('search/tweets', {q: req.query.query, filter: 'safe'}, function (err, tweets, response) {
+    client.get('search/tweets', {q: req.query.query, filter: 'safe', lang: 'en'}, function (err, tweets, response) {
         if (err) return console.error(err);
         res.json(tweets);
     });
