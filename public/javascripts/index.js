@@ -41,7 +41,7 @@ function playAudio(inputString) {
 
 function retrieveTweets(inputString) {
     $.ajax({
-        url: 'tweetFunctions.php',
+        url: '/tweets',
         type: 'GET',
         dataType: 'json',
         data: {
@@ -67,7 +67,7 @@ function randomElement(array) {
 
 function embedTweet(tweet) {
     $.ajax({
-        url: 'tweetFunctions.php',
+        url: '/tweets/embed',
         type: 'GET',
         dataType: 'json',
         data: {
